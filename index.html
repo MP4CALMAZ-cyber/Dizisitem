@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <meta charset="UTF-8">
+    <!-- Bu etiket dış sitelerin "kimden geliyor bu istek" kontrolünü kör eder -->
     <meta name="referrer" content="no-referrer">
     <title>Dizi Sitem</title>
     <style>
@@ -9,7 +11,7 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px;
+            padding: 50px; oynatici
         }
         input {
             width: 500px;
@@ -40,21 +42,18 @@
     <h1>Dizi İzleme Platformum</h1>
     <p>Oynatıcı linkini veya adresini aşağıya yapıştır:</p>
 
-    <!-- Kullanıcının link gireceği sade input -->
     <input type="text" id="diziUrl" placeholder="Link buraya...">
     <button type="button" onclick="diziAc()">BÖLÜMÜ AÇ</button>
 
-    <!-- Videonun görüneceği kutu -->
     <div class="video-alani">
-       <!-- İframe etiketini tam olarak bu şekilde değiştir -->
-<iframe id="oynatici" width="800" height="450" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- İzinlerin hepsi full açıldı -->
+        <iframe id="oynatici" width="800" height="450" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 
     <script>
         function diziAc() {
             var adres = document.getElementById("diziUrl").value.trim();
             if (adres !== "") {
-                // Doğrudan girilen adresi iframe'e yükler
                 document.getElementById("oynatici").src = adres;
             } else {
                 alert("Lütfen bir bağlantı yapıştır!");
